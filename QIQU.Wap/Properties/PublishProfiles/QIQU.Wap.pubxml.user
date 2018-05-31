@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\奇趣网\发布后\wap</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/12/2016 10:53:45</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>10/12/2016 10:53:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/PagedList.dll">
+      <publishTime>10/12/2016 13:06:14</publishTime>
+    </File>
+    <File Include="bin/QIQU.Entity.dll">
+      <publishTime>12/20/2016 15:18:55</publishTime>
+    </File>
+    <File Include="bin/QIQU.Service.dll">
+      <publishTime>12/20/2016 15:18:56</publishTime>
+    </File>
+    <File Include="bin/QIQU.Tools.dll">
+      <publishTime>12/19/2016 11:47:29</publishTime>
+    </File>
+    <File Include="bin/QIQU.Wap.dll">
+      <publishTime>12/20/2016 15:20:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="css/comments.css">
+      <publishTime>11/29/2016 15:38:34</publishTime>
+    </File>
+    <File Include="css/main.css">
+      <publishTime>12/06/2016 14:04:01</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>12/20/2016 15:03:40</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>11/23/2016 14:50:54</publishTime>
+    </File>
+    <File Include="images/default.png">
+      <publishTime>11/23/2016 16:28:13</publishTime>
+    </File>
+    <File Include="images/default_t.png">
+      <publishTime>12/02/2016 17:53:52</publishTime>
+    </File>
+    <File Include="images/head_foot_ico.png">
+      <publishTime>11/23/2016 15:09:33</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>11/23/2016 17:46:08</publishTime>
+    </File>
+    <File Include="Scripts/index.js">
+      <publishTime>11/23/2016 18:18:37</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>11/23/2016 18:19:54</publishTime>
+    </File>
+    <File Include="Scripts/Page/art_index.js">
+      <publishTime>12/07/2016 13:26:05</publishTime>
+    </File>
+    <File Include="Scripts/Page/comments.js">
+      <publishTime>12/07/2016 13:29:54</publishTime>
+    </File>
+    <File Include="Views/Article/Comments.cshtml">
+      <publishTime>11/29/2016 17:59:26</publishTime>
+    </File>
+    <File Include="Views/Article/Details.cshtml">
+      <publishTime>12/07/2016 13:44:56</publishTime>
+    </File>
+    <File Include="Views/Article/Index.cshtml">
+      <publishTime>12/07/2016 13:17:37</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>12/20/2016 15:04:21</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>11/23/2016 14:50:54</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/07/2016 13:34:02</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model QIQU.Entity.Extend.AuditArticleDetails
+
+<input type="hidden" id="hidden_id" value="@Model.Id" />
+<div class="lincoapp-article">
+    <h1 class="title">@Model.Title</h1>
+    <div class="from">
+        <span class="resource">@Model.Author</span>
+        <span class="time">@Model.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</span>
+    </div>
+    <article>
+
+        @(new HtmlString(Model.Contents))
+
+    </article>
+    <div class="art-extend">
+        @switch (Model.status)
+        {
+            case QIQU.Entity.ArticleAuditStatus.Auditing:
+                <span id="span_remove"> 删 除 </span>
+                <span id="span_publish"> 发 布 </span>
+                break;
+            case QIQU.Entity.ArticleAuditStatus.Delete:
+                <span id="span_recovery"> 恢 复 </span>
+                <span id="span_del"> 彻底删除 </span>
+                break;
+            case QIQU.Entity.ArticleAuditStatus.Complete:
+                break;
+            default:
+                break;
+        }
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/Page/aud_details.js"></script>

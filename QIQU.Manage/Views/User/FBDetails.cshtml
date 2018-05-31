@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Add";
+}
+@model QIQU.Entity.Extend.FeedBackDetails
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="/Main/Index/">首页</a></li>
+                    <li><a href="/User/FeedBack/" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true">反馈列表</a></li>
+                    <li class="active"><span>反馈详情</span></li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <input type="hidden" name="Id" id="hidden_id" value="@Model.Id" />
+                    <div style="text-align: left;margin:10px;" class="panel">
+                        <div class="panel-heading">
+                            <b>反馈详情</b>
+                        </div>
+
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th style="width:150px;">标题 ：</th>
+                                    <td>@Model.Title</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th style="width:150px;">内容 ：</th>
+                                    <td>@Model.Contents</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>反馈用户：</th>
+                                    <td>@Model.UserName</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>来源：</th>
+                                    <td>@Model.FromIp  @Model.FromArea</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>状态：</th>
+                                    <td>@(new HtmlString(QIQU.Entity.EnumDescription.Get(Model.status)))</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th>反馈日期：</th>
+                                    <td>@Model.CreateTime.ToString("yyyy-MM-dd HH:m:ss")</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p style="margin:10px;">
+                        @if (Model.status == QIQU.Entity.FeedBackStatus.Unread)
+                        {
+                            <input type="button" class="btn btn-submit btn-primary" id="btn_fbsub" name="btn_fbsub" style="width:130px;margin-left: 0px;margin-right:10px;" value="标记为已阅读" />
+                            <script type="text/javascript">
+                                $(function () {
+                                    $("#btn_fbsub").click(function () {
+                                        $.post("/User/fbstatus", { id: '@Model.Id' }, function (data) {
+                                            if (data != null && data.state > 0) {
+                                                $("#span_info").html("<font color='blue'>标记成功,跳转中...</font>");
+                                                Sleep(this, 1500);
+                                                this.NextStep = function () {
+                                                    document.getElementById("a_fb_return").click();
+                                                }
+                                            } else {
+                                                $("#span_info").html("<font color='red'>" + data.error + "</font>")
+                                            }
+                                        });
+                                    });
+                                })
+                            </script>
+                        }
+
+                        <a class="btn btn-default" style="width:100px;margin-left: 10px;margin-right:10px;" href="@ViewBag.ReferUrl" id="a_fb_return" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true">返 回</a>
+                        <span id="span_info" style="margin-left:10px;"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

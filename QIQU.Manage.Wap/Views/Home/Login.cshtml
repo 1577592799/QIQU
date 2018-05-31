@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>信息审核系统 - 奇趣网</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/login.css" media="all" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        var isAction = false;
+        $(function () {
+            $("form").submit(function () {
+                //验证表单文本
+                var $uemail = $("input[name=uemail]");
+                if ($uemail == null || $uemail.val() == "" || $uemail.val() == null) {
+                    $uemail.focus();
+                    $("div#span_result").html("<font color='red'>请输入正确的账号</font>");
+                    isAction = false;
+                    return false; //不刷新页面
+                } else {
+                    $("div#span_result").html("");
+                }
+
+                var $upw = $("input[name=upw]");
+                if ($upw == null || $upw.val() == "" || $upw.val() == null || $upw.val().length < 6 || $upw.val().length > 20) {
+                    $upw.focus();
+                    $("div#span_result").html("<font color='red'>请输入6-20个字符以的内正确密码</font>");
+                    isAction = false;
+                    return false; //不刷新页面
+                } else {
+                    $("div#span_result").html("");
+                }
+
+                form1.btn_submit.value = "登录中...";
+
+                $.post("/Home/LoginDo", { name: $uemail.val(), pwd: $upw.val() }, function (data) {
+                    if (data != null) {
+                        if (data.state > 0) {
+                            form1.btn_submit.value = "登录成功,跳转中...";
+                            window.location.href = data.gto;
+                        } else {
+                            $("div#span_result").html("<span style='color:red'>" + data.error + "</span>");
+                            form1.btn_submit.value = "登录";
+                            return;
+                        }
+                    }
+                    else {
+                        isAction = false;
+                    }
+                })
+                return false; //不刷新页面
+            });
+
+            $(".btn-cancel").click(function () { $("input[name=uemail]").val(""); });
+        });
+
+    </script>
+
+</head>
+<body>
+    @*<header>
+        <span>信息审核系统登录</span>
+    </header>*@
+
+    <div class="login-wrap">
+        <form id="form1">
+            <div class="m-login-ttlogo">
+                <div class="yiche-logo"></div>
+                <p>奇趣网审核系统</p>
+            </div>
+            <div class="input-box">
+                <div class="input-item">
+                    <span>帐号</span><input id="uemail" name="uemail" type="text" placeholder="手机/邮箱/用户名" class="two-character" value="">
+                    <a class="btn-cancel" href="javascript:void(0);"></a>
+                </div>
+                <div class="input-item">
+                    <span>密码</span><input id="upw" name="upw" type="password" placeholder="请输入您的密码" class="two-character">
+                </div>
+            </div>
+            <div id="span_result" class="input-alert-bottom"></div>
+            <input type="submit" class="btn-blue" name="btn_submit" value=" 登 录 ">
+        </form>
+
+        <div style="font-size:10px">
+            <span>Copyright © 2016-2016 奇趣科技 All Rights Reserved </span>
+        </div>
+    </div>
+</body>
+</html>

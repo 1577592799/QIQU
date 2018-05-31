@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\奇趣网\发布后\web</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/12/2016 10:53:45</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>10/12/2016 10:53:45</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/PagedList.dll">
+      <publishTime>10/12/2016 13:06:14</publishTime>
+    </File>
+    <File Include="bin/QIQU.Entity.dll">
+      <publishTime>12/20/2016 16:18:49</publishTime>
+    </File>
+    <File Include="bin/QIQU.Service.dll">
+      <publishTime>12/20/2016 16:18:49</publishTime>
+    </File>
+    <File Include="bin/QIQU.Tools.dll">
+      <publishTime>12/20/2016 16:18:48</publishTime>
+    </File>
+    <File Include="bin/QIQU.Web.dll">
+      <publishTime>12/20/2016 16:18:50</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>10/12/2016 10:19:46</publishTime>
+    </File>
+    <File Include="css/comments.css">
+      <publishTime>11/29/2016 15:55:39</publishTime>
+    </File>
+    <File Include="css/home.css">
+      <publishTime>12/20/2016 14:32:34</publishTime>
+    </File>
+    <File Include="css/qiqu-pc.css">
+      <publishTime>12/20/2016 14:38:14</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>12/20/2016 14:58:25</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>10/12/2016 10:20:17</publishTime>
+    </File>
+    <File Include="images/default.png">
+      <publishTime>11/18/2016 10:51:14</publishTime>
+    </File>
+    <File Include="images/default_t.png">
+      <publishTime>12/02/2016 10:49:03</publishTime>
+    </File>
+    <File Include="images/hot.png">
+      <publishTime>10/13/2016 13:47:56</publishTime>
+    </File>
+    <File Include="images/ishayou6.png">
+      <publishTime>10/13/2016 13:29:21</publishTime>
+    </File>
+    <File Include="images/logo.png">
+      <publishTime>12/20/2016 14:19:14</publishTime>
+    </File>
+    <File Include="images/logo2.png">
+      <publishTime>10/13/2016 13:26:19</publishTime>
+    </File>
+    <File Include="images/qqzone.png">
+      <publishTime>10/13/2016 13:42:38</publishTime>
+    </File>
+    <File Include="images/search.png">
+      <publishTime>10/13/2016 13:49:25</publishTime>
+    </File>
+    <File Include="images/tag.png">
+      <publishTime>10/13/2016 13:52:58</publishTime>
+    </File>
+    <File Include="images/vffv-500x300.png">
+      <publishTime>10/13/2016 13:35:54</publishTime>
+    </File>
+    <File Include="images/weix.png">
+      <publishTime>10/13/2016 13:48:17</publishTime>
+    </File>
+    <File Include="images/weixin.png">
+      <publishTime>10/13/2016 13:41:36</publishTime>
+    </File>
+    <File Include="images/xinlan.png">
+      <publishTime>10/13/2016 13:41:36</publishTime>
+    </File>
+    <File Include="images/zan.png">
+      <publishTime>10/13/2016 13:52:34</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/13/2016 16:57:50</publishTime>
+    </File>
+    <File Include="Scripts/comments.js">
+      <publishTime>12/05/2016 14:06:44</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>10/13/2016 14:11:18</publishTime>
+    </File>
+    <File Include="Scripts/jquery.form.js">
+      <publishTime>12/05/2016 18:15:22</publishTime>
+    </File>
+    <File Include="Views/Error/E404.cshtml">
+      <publishTime>10/14/2016 13:54:00</publishTime>
+    </File>
+    <File Include="Views/Home/Article.cshtml">
+      <publishTime>12/05/2016 15:16:51</publishTime>
+    </File>
+    <File Include="Views/Home/Comments.cshtml">
+      <publishTime>12/02/2016 14:39:03</publishTime>
+    </File>
+    <File Include="Views/Home/FeedBack.cshtml">
+      <publishTime>12/05/2016 18:27:40</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>12/05/2016 15:16:01</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout_Base.cshtml">
+      <publishTime>12/05/2016 15:15:53</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout_Base2.cshtml">
+      <publishTime>12/05/2016 15:18:53</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout_Content.cshtml">
+      <publishTime>12/05/2016 14:38:20</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout_Footer.cshtml">
+      <publishTime>12/05/2016 14:56:10</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout_Header.cshtml">
+      <publishTime>12/05/2016 14:54:58</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout_Right.cshtml">
+      <publishTime>12/05/2016 15:15:19</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout_Script.cshtml">
+      <publishTime>12/20/2016 15:02:25</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>11/18/2016 14:48:10</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/20/2016 15:18:57</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

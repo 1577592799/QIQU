@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+    @RenderSection("metas", false)
+    @RenderPage("~/Views/Shared/_Layout_Script.cshtml")
+</head>
+<body>
+    <!--header-web-->
+    @RenderPage("~/Views/Shared/_Layout_Header.cshtml")
+
+    <!--main-->
+    <div id="main">
+        @RenderBody()
+        @RenderPage("~/Views/Shared/_Layout_Right.cshtml")
+    </div>
+
+    <!--dibu-->
+    @RenderPage("~/Views/Shared/_Layout_Footer.cshtml")
+
+</body>
+</html>

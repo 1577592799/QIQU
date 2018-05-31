@@ -1,0 +1,158 @@
+﻿
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">首页</a></li>
+                    <li class="active"><span>评论列表</span></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">
+                        <h2 style="font-weight:900;" class="pull-left">评论筛选</h2>
+                    </header>
+                    <div class="main-box-body clearfix">
+                        <table>
+                            <tr style="height:55px;">
+                                <th style="width:200px;">关键字 ：</th>
+                                <td>
+                                    <input type="text" class="form-control" style="width:200px;" maxlength="50" id="input_title" name="input_title" />
+                                </td>
+                                <td style="width:100px;"></td>
+                                <th style="width:200px;">状态：</th>
+                                <td>
+                                    <select style="width:200px;" name="sel_status" id="sel_status" class="form-control">
+                                        <option value="0">请选择</option>
+                                        <option value="1">显示</option>
+                                        <option value="2">隐藏</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr style="height:55px;">
+                                <th style="width:200px;">日期：</th>
+                                <td>
+                                    <input type="text" class="form-control form_datetime" style="width:150px; " value="" id="startDate" size="16" />&nbsp;- &nbsp;
+                                    <input type="text" class="form-control form_datetime" style="width:150px;" value="" id="endDate" size="16" />
+                                </td>
+                                <td style="width:100px;"></td>
+                                <td colspan="3">
+                                    <a href="javascript:;" class="btn btn-default" style="width:100px;">查询</a> &nbsp;&nbsp;&nbsp;
+                                    <a href="/Article/Comments/" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true" style="vertical-align:bottom;">重置</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">
+                        <h2 style="font-weight:900;" class="pull-left">评论管理</h2>
+                    </header>
+                    <div class="main-box-body clearfix">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="center" style="width:150px;">序号|文章ID</th>
+                                        <th style="width:120px;">用户</th>
+                                        <th class="center">内容</th>
+                                        <th class="center">回复数</th>
+                                        <th class="center">来源信息</th>
+                                        <th class="center">状态</th>
+                                        <th class="center">评论日期</th>
+                                        <th class="center">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.Comments == null || ViewBag.Comments.Count <= 0)
+                                    {
+                                        <tr style="text-align:center;">
+                                            <td colspan="6">
+                                                <font color="red">没有找到评论数据</font>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        foreach (QIQU.Entity.Extend.CommentAuditModel m in ViewBag.Comments)
+                                        {
+                                            <tr style="text-align:center;vertical-align:middle;" onmouseover=" this.style.background = '#F4F7FA';" onmouseout="this.style.background = '';">
+                                                <td>@m.Id | @m.ArticleId</td>
+                                                <td style="text-align:left;">
+                                                    @m.UserName
+                                                    @if (m.ParentId > 0)
+                                                    {
+                                                        <label style="color: #dddddd;">回复：@m.ParentId</label>
+                                                    }
+                                                </td>
+                                                <td>@m.Contents</td>
+                                                <td>@m.ChildCount</td>
+                                                <td>@m.FromIP  @m.FromArea</td>
+                                                <td>@(new HtmlString(QIQU.Entity.EnumDescription.Get(m.status)))</td>
+                                                <td>@m.CreateTime.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                                <td>
+                                                    @if (m.status == QIQU.Entity.CommentStatus.Show)
+                                                    {
+                                                        <a href="javascript:;" data-id="@m.Id" name="a_comment">隐藏评论</a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="page">
+                                @(new HtmlString(ViewBag.PageHtml))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="@ViewBag.CurrUrl" id="a_hidden_currurl" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true" style="display:none;"></a>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("a[name=a_comment]").click(function () {
+            var id = $(this).attr("data-id");
+            Hide(id);
+
+        });
+    })
+
+    var isRuning = false;
+    function Hide(id) {
+        if (id <= 0) return;
+
+        if (isRuning) return;
+        isRuning = true;
+        layer.msg('数据提交中...');
+
+        $.post("/article/cmtstatus", { id: id }, function (data) {
+            layer.close();
+            if (data != null && data.state > 0) {
+                layer.msg('当前评论已经被隐藏成功');
+            } else {
+                layer.msg("<font color='red'>" + data.error + "</font>");
+            }
+            Sleep(this, 1500);
+            this.NextStep = function () {
+                document.getElementById("a_hidden_currurl").click();
+                layer.closeAll();
+                isRuning = false;
+            }
+        });
+    }
+</script>

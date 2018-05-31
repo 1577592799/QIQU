@@ -1,0 +1,387 @@
+﻿@using UMould.TLM.Manage.Model
+@model MemberExt
+@{
+    Layout = null;
+}
+<link href="~/Scripts/dialog/ui-dialog.css" rel="stylesheet" />
+<script src="~/Scripts/dialog/dialog-min.js" type="text/javascript"></script>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="/Member/List/" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true">会员列表</a></li>
+                    <li class="active"><span>会员升级</span></li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">
+                        <h2 class="pull-left">会员升级操作</h2>
+                    </header>
+                    <div style="text-align: left;margin:10px;" class="panel">
+                        <!--用户信息-->
+                        <div class="panel-heading">
+                            <b>会员信息</b>
+                        </div>
+                        @if (Model != null)
+                        {
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th class="center" style="width:200px;">序号</th>
+                                        <td style="width:500px;" class="w-p50">
+                                            <label>@Model.Id</label>
+                                            <input type="hidden" value="1" id="hidden_userid" name="hidden_userid" />
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">用户Emaiil</th>
+                                        <td>
+                                            @Model.Email
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">用户状态</th>
+                                        <td>
+                                            @switch (Model.State)
+                                            {
+                                                case 1:
+                                                    <font color="gray">正式用户</font>
+                                                    break;
+                                                case 2:
+                                                <font color="red">试用用户</font>
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">注册日期</th>
+                                        <td>
+                                            @Model.AddDate.ToString("yyyy-MM-dd HH:m:ss")
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">修改日期</th>
+                                        <td>
+                                            @Model.MdfDate.ToString("yyyy-MM-dd HH:m:ss")
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+
+                        <!--公司信息-->
+                        <div class="panel-heading" style="border-top: 1px solid #d9dadc;">
+                            <b>所属公司信息</b>
+                        </div>
+                        @if (Model != null && Model.Company != null)
+                        {
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th class="center" style="width:200px;">公司序号</th>
+                                        <td style="width:500px;" class="w-p50">
+                                            <label>@Model.Company.Id</label>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">公司名称</th>
+                                        <td>
+                                            @Model.Company.Name
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">联系信息</th>
+                                        <td>
+                                            联系人：@Model.Company.Manager<br />
+                                            Email：@Model.Company.Email<br />
+                                            传真：@Model.Company.Fax<br />
+                                            地址：@Model.Company.Address<br />
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">公司状态</th>
+                                        <td>
+                                            @switch (Model.Company.State)
+                                            {
+                                                case 1:
+                                                    <font color="gray">正式</font>
+                                                    break;
+                                                case 2:
+                                                <font color="red">试用</font>
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">注册日期</th>
+                                        <td>
+                                            @Model.Company.AddDate.ToString("yyyy-MM-dd HH:m:ss")
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">修改日期</th>
+                                        <td>
+                                            @Model.Company.MdfDate.ToString("yyyy-MM-dd HH:m:ss")
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+
+                        <!--数据信息-->
+                        <div class="panel-heading" style="border-top: 1px solid #d9dadc;">
+                            <b>数据信息</b>
+                        </div>
+                        @if (Model != null && Model.Company != null && Model.Company.DataInformation != null)
+                        {
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th class="center" style="width:200px;">公司系统域名</th>
+                                        <td><input type="text" value="@Model.Company.DataInformation.Domain" class="form-control" name="input_companydomain" />&nbsp;&nbsp;&nbsp;<font color="#2a98ef">升级用户时,请认真填写此域名信息</font></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">数据库名称</th>
+                                        @if (Model.State == 1)
+                                        {
+                                            <td>
+                                                <input type="hidden" value="@Model.Company.DataInformation.DBName" maxlength="30" class="form-control" style="width:188px;" name="input_dbname" />
+                                                @Model.Company.DataInformation.DBName
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>@Model.Company.DataInformation.DBName<label>_</label><input type="text" value="" maxlength="30" class="form-control" style="width:188px;" name="input_dbname" /></td>
+                                        }
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">数据库地址</th>
+                                        <td>@Model.Company.DataInformation.DBSource</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">数据库登录名</th>
+                                        <td>@Model.Company.DataInformation.DBLoginName</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="center">数据库登录密码</th>
+                                        <td>@Model.Company.DataInformation.DBPwd</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+
+                    <p>
+                        @if (Model != null && Model.State == 1)
+                        {
+                        }
+                        else
+                        {
+                            <a class="btn btn-submit btn-primary" style="width:150px;margin-left: 10px;margin-right:10px;" href="javascript:;" onclick="UplevelUser(@(Model != null && Model.Company != null && Model.Company.DataInformation != null ? Model.Company.DataInformation.Id : 0),@(Model!=null?Model.Id:0),@(Model != null && Model.Company != null ? Model.Company.Id : 0),'@(Model != null && Model.Company != null ? Model.Company.Manager : "")')">升级为正式用户</a>
+                        }
+                        <a class="btn btn-default" style="width:100px;margin-left: 10px;margin-right:10px;" href="javascript:;" onclick="MemberDel(@(Model!=null?Model.Id:0))">删 除</a>
+                        <a class="btn btn-default" style="width:100px;margin-left: 10px;margin-right:10px;" href="/Member/List/" id="a_return" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true">返 回</a>
+                        @*<a class="btn btn-default" style="width:120px;margin-left: 10px;margin-right:10px;" href="javascript:;" onclick="CreateDB2(@(Model != null ? Model.Id : 0),@(Model != null && Model.Company != null ? Model.Company.Id : 0),'@(Model != null && Model.Company != null ? Model.Company.Manager : "")')">重新生成数据</a>*@
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var isAction = false;
+    function MemberDel(userID) {
+        if (isAction == true) {
+            return;
+        }
+        isAction = true;
+
+        if (!window.confirm("数据删除后不能恢复，确认删除？")) {
+            return;
+        }
+        $.post("/Member/DelMember/", { uid: userID }, function (data) {
+            if (data != "" && data != null) {
+                var json = eval('(' + data + ')');
+                if (parseInt(json['state']) > 0) {
+                    document.getElementById('a_return').click();
+                } else {
+                    alert(json['error']);
+                    isAction = false;
+                }
+            } else {
+                isAction = false;
+            }
+        })
+    }
+
+    function UplevelUser(dbID, userID, cmpID, userName) {
+        if (isAction == true) {
+            return;
+        }
+        isAction = true;
+
+        var $cmpnameObj = $("input[name=input_dbname]");
+        if ($cmpnameObj.length <= 0 || $cmpnameObj.val() == "" || $cmpnameObj.val() == null || $cmpnameObj.val().length <= 0) {
+            $cmpnameObj.css("border", "1px solid red");
+            alert("请输入数据库名称");
+            isAction = false;
+            return;
+        } else {
+            $cmpnameObj.css("border", "1px solid #ccc");
+        }
+
+        var isOK = true;
+        var d = dialog({
+            title: '用户升级',
+            content: "<p><font color='blue'>正在升级，请稍后...</font></p>",
+            width: '400',
+            height: '250',
+            cancelDisplay: false,
+            cancelValue: '取消',
+            onshow: function () {
+                isOK = false;
+
+                //创建数据
+                $.post("/Member/CreateDB/", { dbname: $cmpnameObj.val() }, function (data) {
+                    var json = eval('(' + data + ')');
+                    if (parseInt(json['state']) > 0) {
+                        d.content("<p><font color='blue'>数据库已经生成完成</font></p><p><font color='blue'>正在绑定默认数据，请稍后...</font></p>");
+
+                        //生成数据
+                        $.post("/Member/CreateDBData/", { dbname: json['dbname'], uid: userID, mbname: userName }, function (data2) {
+                            var json2 = eval('(' + data2 + ')');
+                            if (parseInt(json2['state']) > 0) {
+                                d.content("<p><font color='blue'>数据库已经生成完成</font></p><p><font color='blue'>数据库默认数据绑定完成</font></p><p><font color='blue'>正在升级用户，请稍后...</font></p>")
+
+                                //更新状态
+                                $.post("/Member/MemberState/", {
+                                    dbid: dbID,
+                                    uid: userID,
+                                    cmpid: cmpID,
+                                    domain: $("input[name=input_companydomain]").val(),
+                                    dbname: json['dbname']
+                                }, function (data3) {
+                                    var json3 = eval('(' + data3 + ')');
+                                    if (parseInt(json3['state']) > 0) {
+                                        d.content("<p><font color='blue'>数据库已经生成完成</font></p><p><font color='blue'>数据库默认数据绑定完成</font></p><p><font color='blue'>用户升级完成</font></p>")
+                                        setTimeout(function () {
+                                            //window.location = window.location;
+                                            document.getElementById('a_return').click();
+                                            d.close().remove();
+                                        }, 5000);
+                                    } else {
+                                        d.content("<p><font color='blue'>数据库已经生成完成</font></p><p><font color='blue'>数据库默认数据绑定完成</font></p><p><font color='red'>" + json3['error'] + "</font></p>")
+                                        isAction = false;
+                                        isOK = true;
+                                    }
+                                })
+
+                            } else {
+                                d.content("<p><font color='blue'>数据库已经生成完成</font></p><p><font color='blue'>数据库默认数据绑定完成</font></p><p><font color='red'>" + json2['error'] + "</font></p>")
+                                isAction = false;
+                                isOK = true;
+                            }
+
+                        })
+
+                    } else {
+                        d.content("<p><font color='blue'>数据库已经生成完成</font></p><p><font color='red'>" + json['error'] + "</font></p>")
+                        isAction = false;
+                        isOK = true;
+                    }
+                })
+            },
+            cancel: function () {
+                if (!isOK) {
+                    return false;
+                } else {
+                    window.location = window.location;
+                }
+            }
+        });
+        d.showModal();
+    }
+
+    function CreateDB2(userID, cmpID, userName) {
+        if (isAction == true) {
+            return;
+        }
+        isAction = true;
+        var $dbnameObj = $("input[name=input_dbname]");
+        if ($dbnameObj.length <= 0 || $dbnameObj.val() == "" || $dbnameObj.val() == null || $dbnameObj.val().length <= 0) {
+            $dbnameObj.css("border", "1px solid red");
+            alert("数据库名称不能为空");
+            isAction = false;
+            return;
+        } else {
+            $dbnameObj.css("border", "1px solid #ccc");
+        }
+
+        var isOK = true;
+        var d = dialog({
+            title: '重新生成数据库',
+            content: "<p><font color='blue'>正在生成，请稍后...</font></p>",
+            width: '300',
+            height: '60',
+            cancelDisplay: false,
+            cancelValue: '取消',
+            onshow: function () {
+                $.post("/Member/CheckDB/", {
+                    dbname: $dbnameObj.val(),
+                    uid: userID,
+                    mbname: userName,
+                    cmpid:cmpID
+                }, function (data) {
+                    var json = eval('(' + data + ')');
+                    if (parseInt(json['state'])>0) {
+                        d.content("<p><font color='blue'>数据库生成完成，跳转中...</font></p>")
+                        setTimeout(function () {
+                            document.getElementById('a_return').click();
+                            d.close().remove();
+                        }, 3000);
+                    } else {
+                        d.content("<p><font color='red'>"+json['error']+"</font></p>");
+                        isAction = false;
+                        isOK = true;
+                    }
+                })
+            },
+            cancel: function () {
+                if (!isOK) {
+                    return false;
+                } else {
+                    //window.location = window.location;
+                }
+            }
+        });
+        d.showModal();
+
+    }
+</script>
+
+

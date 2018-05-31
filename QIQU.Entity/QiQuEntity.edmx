@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QiQuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="t_admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="login_pwd" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="real_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_article">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category" Type="int" Nullable="false" />
+          <Property Name="author" Type="nvarchar" MaxLength="20" />
+          <Property Name="title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="keys" Type="nvarchar" MaxLength="200" />
+          <Property Name="summary" Type="nvarchar" MaxLength="300" />
+          <Property Name="contents" Type="text" />
+          <Property Name="img_url" Type="nvarchar" MaxLength="100" />
+          <Property Name="read_count" Type="int" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="recommend" Type="int" Nullable="false" />
+          <Property Name="comment_count" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_article_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_article_coll">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category" Type="int" Nullable="false" />
+          <Property Name="author" Type="nvarchar" MaxLength="20" />
+          <Property Name="title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="keys" Type="nvarchar" MaxLength="200" />
+          <Property Name="summary" Type="nvarchar" MaxLength="500" />
+          <Property Name="contents" Type="text" />
+          <Property Name="img_url" Type="nvarchar" MaxLength="100" />
+          <Property Name="read_count" Type="int" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="recommend" Type="int" Nullable="false" />
+          <Property Name="org_link" Type="nvarchar" MaxLength="300" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_article_comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="article_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="contents" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="child_count" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="from_ip" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="from_area" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_feedback">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="contents" Type="nvarchar" MaxLength="300" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="from_ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="from_area" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_publish_record">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="coll_id" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="message" Type="nvarchar" MaxLength="50" />
+          <Property Name="create_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="QiQuModelStoreContainer">
+          <EntitySet Name="t_admin" EntityType="Self.t_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_article" EntityType="Self.t_article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_article_category" EntityType="Self.t_article_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_article_coll" EntityType="Self.t_article_coll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_article_comments" EntityType="Self.t_article_comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_feedback" EntityType="Self.t_feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_publish_record" EntityType="Self.t_publish_record" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QiQuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="t_admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="login_pwd" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="real_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="t_article">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category" Type="Int32" Nullable="false" />
+          <Property Name="author" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="keys" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="read_count" Type="Int32" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="img_url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="recommend" Type="Int32" Nullable="false" />
+          <Property Name="summary" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="comment_count" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="QiQuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="t_admin" EntityType="Self.t_admin" />
+          <EntitySet Name="t_article" EntityType="Self.t_article" />
+          <EntitySet Name="t_article_coll" EntityType="QiQuModel.t_article_coll" />
+          <EntitySet Name="t_publish_record" EntityType="QiQuModel.t_publish_record" />
+          <EntitySet Name="t_article_category" EntityType="QiQuModel.t_article_category" />
+          <EntitySet Name="t_article_comments" EntityType="QiQuModel.t_article_comments" />
+          <EntitySet Name="t_feedback" EntityType="QiQuModel.t_feedback" />
+        </EntityContainer>
+        <EntityType Name="t_article_coll">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category" Type="Int32" Nullable="false" />
+          <Property Name="author" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="keys" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="img_url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="read_count" Type="Int32" Nullable="false" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="recommend" Type="Int32" Nullable="false" />
+          <Property Name="org_link" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="QiQuModel.ArticleAuditStatus" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_publish_record">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="coll_id" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EnumType Name="ArticleAuditStatus" a:ExternalTypeName="QIQU.Entity.ArticleAuditStatus" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+        <EntityType Name="t_article_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EnumType Name="CommentStatus" a:ExternalTypeName="QIQU.Entity.CommentStatus" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+        <EntityType Name="t_article_comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="article_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="contents" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="child_count" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="QiQuModel.CommentStatus" Nullable="false" />
+          <Property Name="from_area" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="from_ip" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_feedback">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contents" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="create_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="from_ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="from_area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="QiQuModel.FeedBackStatus" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EnumType Name="FeedBackStatus" a:ExternalTypeName="QIQU.Entity.FeedBackStatus" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QiQuModelStoreContainer" CdmEntityContainer="QiQuEntities">
+          <EntitySetMapping Name="t_admin">
+            <EntityTypeMapping TypeName="QiQuModel.t_admin">
+              <MappingFragment StoreEntitySet="t_admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login_name" ColumnName="login_name" />
+                <ScalarProperty Name="login_pwd" ColumnName="login_pwd" />
+                <ScalarProperty Name="real_name" ColumnName="real_name" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_article">
+            <EntityTypeMapping TypeName="QiQuModel.t_article">
+              <MappingFragment StoreEntitySet="t_article">
+                <ScalarProperty Name="comment_count" ColumnName="comment_count" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="recommend" ColumnName="recommend" />
+                <ScalarProperty Name="img_url" ColumnName="img_url" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="keys" ColumnName="keys" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="read_count" ColumnName="read_count" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_article_coll">
+            <EntityTypeMapping TypeName="QiQuModel.t_article_coll">
+              <MappingFragment StoreEntitySet="t_article_coll">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="org_link" ColumnName="org_link" />
+                <ScalarProperty Name="recommend" ColumnName="recommend" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="read_count" ColumnName="read_count" />
+                <ScalarProperty Name="img_url" ColumnName="img_url" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="keys" ColumnName="keys" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_publish_record">
+            <EntityTypeMapping TypeName="QiQuModel.t_publish_record">
+              <MappingFragment StoreEntitySet="t_publish_record">
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="coll_id" ColumnName="coll_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_article_category">
+            <EntityTypeMapping TypeName="QiQuModel.t_article_category">
+              <MappingFragment StoreEntitySet="t_article_category">
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_article_comments">
+            <EntityTypeMapping TypeName="QiQuModel.t_article_comments">
+              <MappingFragment StoreEntitySet="t_article_comments">
+                <ScalarProperty Name="from_ip" ColumnName="from_ip" />
+                <ScalarProperty Name="from_area" ColumnName="from_area" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="child_count" ColumnName="child_count" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="article_id" ColumnName="article_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_feedback">
+            <EntityTypeMapping TypeName="QiQuModel.t_feedback">
+              <MappingFragment StoreEntitySet="t_feedback">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="from_area" ColumnName="from_area" />
+                <ScalarProperty Name="from_ip" ColumnName="from_ip" />
+                <ScalarProperty Name="create_time" ColumnName="create_time" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

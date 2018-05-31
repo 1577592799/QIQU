@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="javascript:;">首页</a></li>
+                    <li class="active"><span>数据信息列表</span></li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">
+                        <h2 style="font-weight:800;" class="pull-left">密码修改</h2>
+                        <a href="/User/Updatapwd/" id="a_updatapwd" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true" style="display:none;">密码修改条件</a>
+                    </header>
+                    <div class="main-box-body clearfix">
+                        <div class="table-responsive">
+                            <table align="center" class="table" style="margin-left: 20px; width: 25%; text-align: left;">
+                                <tbody>
+                                    <tr>
+                                        <th style="color: #838689;border:none;">登录名：</th>
+                                        <td style="border:none;">
+                                            <input type="text" class="form-control" readonly="readonly" value="@ViewBag.Updata" id="input_email" name="input_email">
+                                        </td>
+                                    </tr>
+                                    <tr style="height:20px;border:none;"></tr>
+                                    <tr>
+                                        <th style="color: #838689;border:none;">设置密码 <font color="red">*</font>：</th>
+                                        <td style="border:none;">
+                                            <input type="password" class="form-control" name="input_pwd" id="input_pwd" placeholder="输入新密码" maxlength="20">
+                                            <div id="span_result" style="padding:6px;"></div>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:20px;"></tr>
+                                    <tr>
+                                        <th style="color: #838689;border:none;">确认密码 <font color="red">*</font>：</th>
+                                        <td style="border:none;">
+                                            <input type="password" class="form-control" name="input_pwdok" id="input_pwdok" placeholder="确认密码" maxlength="20">
+                                            <div id="span_resultpwdok" style="padding:6px;"></div>
+                                        </td>
+                                    </tr>
+                                    <tr style="height:20px;border:none;"></tr>
+                                    <tr>
+                                        <td style="border:none;"></td>
+                                        <td style="border:none;">
+                                            <input onclick="updatapwd();" type="button" id="btn_submit" name="btn_submit" class="btn btn-submit btn-primary" style="width:100px;" value="提交"><span id="id_confirm" style="margin-left:20px; color:red"></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="text-align:center;">
+                                        <td colspan="2" style="border:none;">
+                                            <span id="span_result"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function updatapwd() {
+        var isAction = false;
+        //验证表单文本
+        var $uemail = $("input[name=input_pwd]");
+        if ($uemail == null || $uemail.val() == "" || $uemail.val() == null || $uemail.val().length<6 || $uemail.val().length>20) {
+            $uemail.focus();
+            $uemail.css("border-color", "red");
+            $("div#span_result").html("<font color='red'>请输入6-20个字符以的内正确密码</font>");
+            isAction = false;
+            return false; //不刷新页面
+        } else {
+            $uemail.css("border-color", "#ccc");
+            $("div#span_result").html("");
+        }
+
+        var $upw = $("input[name=input_pwdok]");
+        if ($upw == null || $upw.val() == "" || $upw.val() == null || $upw.val().length < 6 || $upw.val().length > 20) {
+            $upw.css("border-color", "red");
+            $upw.focus();
+            $("div#span_resultpwdok").html("<font color='red'>请输入6-20个字符以的内正确密码</font>");
+            isAction = false;
+            return false; //不刷新页面
+        } else {
+            $upw.css("border-color", "#ccc");
+            $("div#span_resultpwdok").html("");
+        }
+        if ($uemail.val() != $upw.val()) {
+            $("#id_confirm").html("两次密码输入不一致");
+            isAction = false;
+            return false;
+        }
+        else {
+            isAction = true;
+        }
+        var username = document.getElementById("input_email").value;
+        $.post("/User/Userupdatapwd", { username:username,uemail: $uemail.val(), upw: $upw.val() }, function (data) {
+            if (data != null) {
+                var ret = eval('(' + data + ')');
+                if (ret['state'] > 0) {
+                    alert(ret['error']);
+                    document.getElementById("a_updatapwd").click();
+                } else {
+                    alert(ret["error"]);
+                    return;
+                }
+            }
+            else {
+                isAction = false;
+            }
+        })
+        return false; //不刷新页面
+    }
+</script>

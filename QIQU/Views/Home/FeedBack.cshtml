@@ -1,0 +1,126 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Base2.cshtml";
+}
+@section metas
+{
+    <title>反馈建议 - 将您对网站的“奇思妙想”分享给我们 - 奇趣网</title>
+    <meta name="keywords" content="奇趣网,奇思妙想,创新概念,科技前沿,艺术设计,创新设计,创意产品,二次元概念,最好玩的网站,前沿信息分享平台,反馈建议">
+    <meta name="description" content="奇趣网站是集中全球各种奇特的设计于一体的文章收集和文章分享的平台">
+}
+@model QIQU.Entity.Extend.FeedBack
+
+<style type="text/css">
+    .form-control {
+        width: 50%;
+        height: 28px;
+        font-size: 13px;
+        line-height: 28px;
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        cursor:pointer;
+    }
+</style>
+
+<div style="padding:20px;">
+    <form method="post">
+        <table style="margin:0 auto;border:none;width:70%;">
+            <tr>
+                <td style="height:70px;">标题(<font color="red">*</font>)：</td>
+                <td><input type="text" class="form-control" name="Title" placeholder="建议标题 (50字以内)" value="@Model.Title" maxlength="50" /></td>
+            </tr>
+            <tr>
+                <td style="height:70px;">内容(<font color="red">*</font>)：</td>
+                <td>
+                    <textarea placeholder="将您的想法告诉我们,我们将会进行合理的改进 (300字以内)" name="Contents" maxlength="300" style="resize:none;height:100px;width:60%;">@Model.Contents</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td style="height:70px;">验证码(<font color="red">*</font>)：</td>
+                <td>
+                    <input type="text" class="form-control" style="width:80px;" value="@Model.VCode" name="VCode" id="input_vcode" maxlength="4" placeholder=" 验证码">
+                    <img src="/home/codeimage/" width="80" id="auth_image" onclick="Refresh()" style="cursor:pointer;vertical-align:middle;height:28px;" />
+                    <label>看不清，<a href="javascript:void(0)" onclick="Refresh();">换一张</a></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="height:70px;"></td>
+                <td>
+                    <input type="submit" id="btn_feedback" class="form-control" style="width:80px;" value="提交反馈">
+                    <span id="span_result" style="color:red;"></span>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script src="~/Scripts/jquery.form.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function Refresh() {
+        document.getElementById("auth_image").src = "/home/codeimage?time=" + (new Date()).getTime();
+        document.getElementById("auth_image").click();
+    }
+    $(function () {
+
+        var isAction = false;
+        $("form").submit(function () {
+            if (isAction) {
+                return false;
+            }
+            isAction = true;
+
+            var $result = $("#span_result");
+            var title = $("input[name=Title]").val();
+            if (title == "" || title == null || title.length > 50) {
+                $result.html("填写的标题不规范");
+                $("input[name=Title]").focus();
+                isAction = false;
+                return false;
+            } else {
+                $result.html("");
+            }
+
+            var content = $("textarea[name=Contents]").val();
+            if (content == "" || content == null || content.length > 300) {
+                $result.html("填写的内容不规范");
+                $("textarea[name=Contents]").focus();
+                isAction = false;
+                return false;
+            } else {
+                $result.html("");
+            }
+
+            var vcode = $("input[name=VCode]").val();
+            if (vcode == "" || vcode == null) {
+                $result.html("请填写验证码");
+                $("input[name=VCode]").focus();
+                isAction = false;
+                return false;
+            } else {
+                $result.html("");
+            }
+
+            $result.html("<font color='blue'>数据提交中，请稍后...</font>");
+            $(this).ajaxSubmit({
+                type: "post",
+                url: "/home/feedbackdo",
+                success: function (data) {
+                    if (data.state > 0) {
+                        $result.html("<font color='blue'>提交成功,将跳转到首页...</font>");
+                        Sleep(this, 1500);
+                        this.NextStep = function () {
+                            window.location = "/index";
+                        }
+                    } else if (data.state == -2) {
+                        $result.html("<font color='red'>" + data.error + "</font>");
+                        isAction = false;
+                        Refresh();//重新刷新
+                    } else {
+                        $result.html("<font color='red'>" + data.error + "</font>");
+                        isAction = false;
+                    }
+                }
+            });
+            return false; //不刷新页面
+        });
+    });
+</script>

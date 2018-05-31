@@ -1,0 +1,116 @@
+
+
+<div class="lincoapp-report j-article-report-wrapper" style="display:none">
+	<header><a href="javascript:;" class="lk-back"></a><h1 class="title">举报</h1></header>
+	<p class="desc">请选择举报原因</p>
+	<ul class="list">
+		<li data-value="1"><span class="btn-check"></span><p>色情暴力</p></li>
+		<li data-value="2"><span class="btn-check"></span><p>谣言</p></li>
+		<li data-value="3"><span class="btn-check"></span><p>广告</p></li>
+		<li data-value="4"><span class="btn-check"></span><p>标题夸张</p></li>
+		<li data-value="5"><span class="btn-check"></span><p>有错别字</p></li>
+		<li data-value="6"><span class="btn-check"></span><p>内容过时</p></li>
+		<li data-value="7"><span class="btn-check"></span><p>内容缺失</p></li>
+	</ul>
+	<span class="btn-report">确认举报</span>
+</div>
+
+
+                            <div class="report-page reportInfo">
+                                <header class="page-comment-header">
+                                    <a href="javascript:;" class="lk-back j-ToggleReport"></a>
+                                    <span class="cmt-total"> 举报 </span>
+                                </header>
+                                <p class="desc-report">请选择举报原因</p>
+                                <ul class="list-report">
+
+                                    <li data-index="0" class="j-SelectReason"><em>欺诈</em><span class="btn-check"></span></li>
+
+                                    <li data-index="1" class="j-SelectReason"><em>谩骂</em><span class="btn-check"></span></li>
+
+                                    <li data-index="2" class="j-SelectReason"><em>骚扰</em><span class="btn-check"></span></li>
+
+                                    <li data-index="3" class="j-SelectReason"><em>广告</em><span class="btn-check"></span></li>
+
+                                    <li data-index="4" class="j-SelectReason"><em>恶意营销</em><span class="btn-check"></span></li>
+
+                                    <li data-index="5" class="j-SelectReason"><em>色情低俗</em><span class="btn-check"></span></li>
+
+                                    <li data-index="6" class="j-SelectReason"><em>地域攻击</em><span class="btn-check"></span></li>
+
+                                    <li data-index="7" class="j-SelectReason"><em>常识性谣言</em><span class="btn-check"></span></li>
+
+                                    <li data-index="8" class="j-SelectReason"><em>反动</em><span class="btn-check"></span></li>
+
+                                    <li data-index="9" class="j-SelectReason"><em>其它</em><span class="btn-check"></span></li>
+
+                                </ul>
+                                <span class="btn-report2 j-Report">提交</span>
+                            </div>
+
+
+
+							<li data-id="6209230933100932945">
+                    <span class="u-img">
+                        <img src="/images/default_t.png" class="img">
+                    </span>
+                    <div class="detail">
+                        <div>
+                            <span class="cmt-name-wrap">
+                                <a class="cmt-name">时间就像沟乳挤一挤总会有</a>
+                            </span>
+                            <span class="cmt-title">
+                                <span class="location">中国</span>
+                                <time class="time">1小时前</time>
+                            </span>
+                        </div>
+
+                        <div class="cmt-content">是不要他原先的脸了啊</div>
+
+                        <ul class="main-comment-list small">
+                            <li>
+                                <span class="cmt-name-wrap">
+                                    <a class="cmt-name">頭髮、亂了</a>
+                                </span>
+                                <span class="cmt-title">
+                                    <time class="time">5小时前</time>
+                                    <span class="location">中国广东广州</span>
+                                </span>
+                                <div class="cmt-content">要知羞耻！特么真的不要脸</div>
+                            </li>
+                            <li>
+                                <span class="cmt-name-wrap">
+                                    <a class="cmt-name">頭髮、亂了</a>
+                                </span>
+                                <span class="cmt-title">
+                                    <time class="time">5小时前</time>
+                                    <span class="location">中国广东广州</span>
+                                </span>
+                                <div class="cmt-content">要知羞耻！特么真的不要脸</div>
+                            </li>
+                            <li>
+                                <span class="cmt-name-wrap">
+                                    <a class="cmt-name">頭髮、亂了</a>
+                                </span>
+                                <span class="cmt-title">
+                                    <time class="time">5小时前</time>
+                                    <span class="location">中国广东广州</span>
+                                </span>
+                                <div class="cmt-content">要知羞耻！特么真的不要脸</div>
+                            </li>
+                        </ul>
+                        <div class="cmt-bar">
+                            <em class="cmt-btn2 btn-ilike">0</em>
+                            <em class="cmt-btn2 btn-reply">回复</em>
+                        </div>
+                        <div class="info-reply-area small" style="display: none;">
+                            <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                            <div class="info-reply-bar">
+
+                                <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                <button class="cmt-btn j-Reply">发表</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>

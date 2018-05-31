@@ -1,0 +1,30 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/QIQU/bin
+/QIQU/css/qiqu-pc - 副本.css
+/QIQU/css/home - 副本.css
+/QIQU/Html/沙优网 ， 互联网的运营规划_files
+/QIQU/obj
+/QIQU/Views/Shared/_Layout_Base - 复制.cshtml
+/QIQU/Views/Home/Index - 复制.cshtml
+/QIQU.AutoPublishing/obj
+/QIQU.AutoPublishing/bin/Debug
+/QIQU.Entity/bin
+/QIQU.Entity/obj
+/QIQU.Manage/bin
+/QIQU.Manage/obj
+/QIQU.Manage/Upfile/ue/201611
+/QIQU.Manage.Service/bin
+/QIQU.Manage.Service/obj
+/QIQU.Manage.Wap/bin
+/QIQU.Manage.Wap/obj
+/QIQU.Manage.Wap/Views/Auditing/手机腾讯网.mht
+/QIQU.Service/bin
+/QIQU.Service/obj
+/QIQU.Tools/bin
+/QIQU.Tools/obj
+/QIQU.Wap/bin
+/QIQU.Wap/obj

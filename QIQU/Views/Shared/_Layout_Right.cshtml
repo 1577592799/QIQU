@@ -1,0 +1,41 @@
+﻿<!--Container-->
+<aside id="sitebar">
+    <div id="soutab">
+        <form method="get" class="search" action="/articles">
+            <input class="text" type="text" name="key" placeholder=" 请输入关键词" value="@Request.Params["key"]">
+            <input class="butto" value="" type="submit">
+        </form>
+    </div>
+
+    <span class="tagtitle">热点搜索</span>
+    <div id="tagg">
+        <ul class="menu">
+            @foreach (var item in ViewBag.Categies)
+            {
+                <li class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="/category/@item.Id">@item.Name</a></li>
+            }
+        </ul>
+    </div>
+
+    <div class="sitebar_list">
+        <h4 class="sitebar_title">最新热文</h4>
+        <ul class="sitebar_list_ul">
+            @foreach (var item in ViewBag.ReadHotList)
+            {
+                <li><a href="/article/@item.Id" target="_blank">@item.Title</a></li>
+            }
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            var elm = $('.sitebar_list');
+            var startPos = $(elm).offset().top;
+            $.event.add(window, "scroll", function () {
+                var p = $(window).scrollTop();
+                $(elm).css('position', ((p) > startPos) ? 'fixed' : 'static');
+                $(elm).css('top', ((p) > startPos) ? '20px' : '');
+            });
+        });
+    </script>
+</aside>
+<div class="clear"></div>

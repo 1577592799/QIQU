@@ -1,0 +1,177 @@
+﻿@{
+    Layout = null;
+}
+@using UMould.TLM.Manage.Model
+
+<link href="~/Scripts/bootstrap.3.3.2/datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.3.3.2/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap.3.3.2/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="javascript:;">首页</a></li>
+                    <li class="active"><span>用户信息列表</span></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">
+                        <h2 style="font-weight:900;" class="pull-left">会员条件筛选</h2>
+                    </header>
+                    <div class="main-box-body clearfix">
+                        <table>
+                            <tr style="height:55px;">
+                                <th style="width:200px;text-align:center;">公司名称：</th>
+                                <td>
+                                    <input type="text" class="form-control" style="width:200px;" maxlength="50" id="companyname" name="companyname" />
+                                </td>
+                                <th style="width:200px;text-align:center;">登录日期：</th>
+                                <td>
+                                    <input type="text" class="form-control form_datetime" style="width:150px; " value="" id="startDate" size="16" />&nbsp;- &nbsp;
+                                    <input type="text" class="form-control form_datetime" style="width:150px;" value="" id="endDate" size="16" />
+                                </td>
+                                <td style="width:60px;"></td>
+                                <td>
+                                    <a href="javascript:;" class="btn btn-default" style="width:100px;" onclick="SellectUserRecord();">查询</a> &nbsp;&nbsp;&nbsp;
+                                    <a href="/User/UserRecord/" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true" style="vertical-align:bottom;">重置</a>
+                                    <a href="/User/UserRecord/" id="a_recordsellect" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true" style="display:none;">用户记录条件筛选</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">
+                        <h2 style="font-weight:900;" class="pull-left">用户记录</h2>
+                        <a id="id_updatauseruserstate" class="btn btn-submit btn-primary" onclick="UpdataUserUserseate();" href="javascript:;" style="width:120px;margin-left: 85%;margin-right:10px;">用户记录更新</a>
+                    </header>
+                    <div class="main-box-body clearfix">
+                        <div class="table-responsive">
+                            <table style="width:100%;">
+                                <tr>
+                                    <th style="text-align:center;width:60px;">序号</th>
+                                    <th style="text-align:center;width:285px;">公司名称</th>
+                                    <th style="text-align:center;width:285px;">登录日期</th>
+                                    <th style="text-align:center;width:285px">日期间隔</th>
+                                    <th style="text-align:center;width:285px">更新日期</th>
+                                    <th style="text-align:center;width:285px">操作</th>
+                                </tr>
+                            </table>
+                            <table id="Table" style="width:100%;">
+                                @if (ViewBag.List == null || ViewBag.List.Count < 0)
+                                {
+                                    <tr style="text-align:center;">
+                                        <td colspan="6">
+                                            <font color="red">没有找到数据信息</font>
+                                        </td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    foreach (var item in ViewBag.List)
+                                    {
+                                        <tr style="height:40px;">
+                                            <td style="text-align:center;width:60px;">@item.CompanyId</td>
+                                            <td style="text-align:center;width:230px;">@item.DBName</td>
+                                            <td style="text-align:center;width:230px;"><span style="color:red;">@item.UesrAction</span></td>
+                                            <td style="text-align:center;width:230px;">
+                                                @if (item.LastUseDate != null)
+                                                {
+                                                    TimeSpan ts = item.AddDate - item.LastUseDate;
+                                                    <font>
+                                                        @if (ts.Days == 0)
+                                                        {
+                                                            <span>@(ts.Hours) 小时</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>@ts.Days 天 @(ts.Hours) 小时</span>
+                                                        }
+                                                    </font>
+                                                }
+                                            </td>
+                                            <td style="text-align:center;width:230px;"><span style="color:red;">@item.AddDate</span></td>
+                                            <td style="text-align:center;width:230px;">操作</td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                            <div class="page">
+                                @(new HtmlString(ViewBag.PageHtml))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    String.prototype.getParameter = function (key) {
+        var re = new RegExp(key + '=([^&]*)(?:&)?');
+        return this.match(re) && this.match(re)[1];
+    };
+    $("div.page a").attr("data-ajax-update", "#main_content");
+    $(function () {
+        $(".form_datetime").datetimepicker({ language: "zh-CN", format: 'yyyy-mm-dd', autoclose: true, todayHighlight: true, minView: 'month' });
+
+        //获取page中的参数
+        var url = $("div.page").find("a:first").attr("href");
+        document.getElementById("companyname").value = url.getParameter("company");
+
+        document.getElementById("startDate").value = url.getParameter("startdate");
+        document.getElementById("endDate").value = url.getParameter("enddate");
+       
+    })
+    //查询
+    function SellectUserRecord() {
+        debugger
+        var url = "?page=1";
+        var company = document.getElementById("companyname").value;
+        if (company!="" && company!=null) {
+            url += "&company=" + company;
+        }
+        var startdate = document.getElementById("startDate").value;
+        if (startdate!="" && startdate!=null) {
+            url += "&startdate=" + encodeURI(startdate);
+        }
+        var enddate = document.getElementById("endDate").value;
+        if (enddate!="" && enddate!=null) {
+            url += "&enddate=" + encodeURI(enddate);
+        }
+        document.getElementById("a_recordsellect").href += url;
+        document.getElementById("a_recordsellect").click();
+    
+    }
+    //用户记录更新
+    function UpdataUserUserseate() {
+        $("#id_updatauseruserstate").text("用户记录更新中....");
+        $.post("/User/UpdataRecord", {}, function (data) {
+            if (data != null) {
+                var ret = eval('(' + data + ')');
+                if (ret['start'] > 0) {
+                    alert("更新成功");
+                    $("#id_updatauseruserstate").text("用户记录更新");
+                    document.getElementById("a_recordsellect").click();
+                }
+                else {
+                    alert("更新失败");
+                    $("#id_updatauseruserstate").text("用户记录更新");
+                }
+            }
+        })
+    }
+
+</script>

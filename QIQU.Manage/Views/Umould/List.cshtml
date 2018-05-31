@@ -1,0 +1,80 @@
+﻿@using UMould.TLM.Manage.Model;
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="/Main/Index/">首页</a></li>
+                    <li class="active"><span>优摩管家更新</span></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <header class="main-box-header clearfix">
+                        <h2 style="font-weight:900;" class="pull-left">优摩管家更新列表</h2>
+                        <span style="float:right;"><a href="/Umould/Action/" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true">添加更新日志</a></span>
+                    </header>
+                    <div class="main-box-body clearfix">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="center" style="width:80px;">序号</th>
+                                        <th class="center">标题</th>
+                                        <th class="center">状态</th>
+                                        <th class="center">添加日期</th>
+                                        <th class="center">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (ViewBag.LogList == null || ViewBag.LogList.Count <= 0)
+                                    {
+                                        <tr style="text-align:center;">
+                                            <td colspan="6">
+                                                <font color="red">暂时没有更新信息</font>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        foreach (UmouldUpdateLog m in ViewBag.LogList)
+                                        {
+                                            <tr style="text-align:center;vertical-align:middle;" onmouseover=" this.style.background = '#F4F7FA';" onmouseout="this.style.background = '';">
+                                                <td>@m.Id</td>
+                                                <td>@m.LogTitle</td>
+                                                <td>
+                                                    @switch (m.State)
+                                                    {
+                                                        case UpdateLogState.Display:
+                                                            <font color="gray">显示</font>
+                                                            break;
+                                                        case UpdateLogState.Hide:
+                                                        <font color="red">隐藏</font>
+                                                            break;
+                                                        default:
+                                                            break;
+                                                    }
+                                                </td>
+                                                <td>@m.AddDate.ToString("yyyy-MM-dd HH:m:ss")</td>
+                                                <td>
+                                                    <a href="/Umould/Action/?logid=@m.Id" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true">修改</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="page">
+                                @(new HtmlString(ViewBag.PageHtml))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

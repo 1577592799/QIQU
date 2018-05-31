@@ -1,0 +1,96 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="/Member/Datainformation/" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true">数据信息列表</a></li>
+                    <li class="active"><span>单条数据更新</span></li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="main-box clearfix">
+                    <div style="text-align: left;margin:10px;" class="panel">
+                        <!--更新数据-->
+                        <form id="form1" action="" method="post">
+                            @foreach (var item in ViewBag.models)
+                            {
+                                <input id="dbid" type="hidden" value="@item.Id" />
+                            }
+                            
+                            <input style="margin-top:10px;" id="fileInput2" name="fileInput2" type="file" onchange="document.getElementById('inputSubmit').click()" />
+                            <input type="submit" style="display:none" id="inputSubmit" />
+                            <span id="replspan_info"></span>
+                        </form>
+                        <div style="height:10px;"></div>
+                        <textarea id="txtSqlfile2" class="form-control" style="height:100px;"></textarea>
+                        <input type="button" value="更新" style="display: none" id="read" />
+                        <div style="height:20px;"></div>
+                        <p>
+                            <a class="btn btn-submit btn-primary" onclick="Renovate();" href="javascript:;" style="width:100px;margin-left: 0px;margin-right:10px;">更新</a>
+                            <a class="btn btn-default" style="width:100px;margin-left: 0px;margin-right:0px;" href="/Member/Datainformation/" data-ajax-update="#main_content" data-ajax-mode="replace" data-ajax="true">返 回</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.form.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var isAction = false;
+        $("form").submit(function () {
+            if (isAction) {
+                return false;
+            }
+            isAction = true;
+
+            $("span#replspan_info").html("<font color='blue'>正在上传，请稍后...</font>");
+
+            $(this).ajaxSubmit({
+                type: "post",  //提交方式
+                url: "/Member/ReplaceUpdata",
+                success: function (data) {
+                    var json = null;
+                    try {
+                        json = eval('(' + data + ')');
+                        if (json['state'] != undefined) {
+                            $("span#replspan_info").html("<font color='red'>" + json['error'] + "</font>");
+                        }
+                    } catch (e) {
+                        $("span#replspan_info").html("");
+                        document.getElementById('txtSqlfile2').value = data;
+                    }
+                    isAction = false;
+                },
+
+                beforeSubmit: function () {
+                }
+            });
+
+            return false; //不刷新页面
+
+        });
+
+        function Renovate() {
+            var date = document.getElementById("txtSqlfile2").value;
+            var dbid = document.getElementById("dbid").value;
+            if (date != null && date != "") {
+                $.post("/Member/ServerUpdata/", { Date: date, Dbid: dbid }, function (data) {
+                    if (data != null) {
+                        var ret = eval("(" + data + ")");
+                        if (ret['state'] > 0) {
+                            alert("成功！");
+                        } else {
+                            alert(ret['error']);
+                        }
+                    }
+                })
+            }
+            else {
+                alert("请添加文件");
+            }
+        }
+    </script>

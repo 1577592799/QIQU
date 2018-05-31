@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section metas
+{
+    <title>奇趣手机站-好奇者的新世界</title>
+    <meta name="keywords" content="奇趣网,创新概念,科技前沿,艺术设计,创新设计,创意产品,二次元概念,最好玩的网站,前沿信息分享平台">
+    <meta name="description" content="奇趣网站是集中全球各种奇特的设计于一体的文章收集和文章分享的平台,包含了很多有趣和很奇特的创意产品,艺术设计,创新概念,科技前沿信息.满足你对未来世界即将诞生的产品或概念充满欲望,激发你对未来的无限想象.在这里,你将拥有自己对信息的衍生思想.">
+}
+
+<nav class="sinaHead" data-sudaclick="mainNav">
+    <h2><a class="h_txt" href="/index">首页</a></h2>
+    @if (ViewBag.Categies != null)
+    {
+        foreach (var item in ViewBag.Categies)
+        {
+            <a href="javascript:;" class="hIcon h_user"></a>
+            <h2><a class="h_txt" href="/category/@item.Id">@item.Name</a></h2>
+        }
+    }
+</nav>
+
+<input type="hidden" id="hidden_count" value="@ViewBag.RecordCount" />
+<input type="hidden" id="hidden_category" value="@ViewBag.CategoryId" />
+<section class="extend-module">
+    <aside class="recommend_moudule">
+
+        @if (ViewBag.ArticleList != null)
+        {
+            foreach (var item in ViewBag.ArticleList)
+            {
+                bool isShowimg = string.IsNullOrEmpty(item.ImgUrl) ? false : true;
+                <a href="/article/@item.Id">
+                    <dl class="clearfix">
+                        @if (isShowimg)
+                        {
+                            <dt class="j_art_lazy" style="background-image: url('@item.ImgUrl');"></dt>
+                        }
+                        <dd>
+                            <h3 class="title">@item.Title</h3>
+                            <div class="mark_count"><time style="margin-right:10px;">@item.Author</time><time>@item.CreateTime.ToString("MM月dd日 HH:mm")</time><span class="comment-count">@item.ReadCount 阅读</span></div>
+                        </dd>
+                    </dl>
+                </a>
+            }
+        }
+
+    </aside>
+    <div class="loading" style="display:none;">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</section>
+
+<script src="~/Scripts/Page/art_index.js" type="text/javascript"></script>

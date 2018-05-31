@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html style="font-size: 100px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta name="x5-page-mode" content="no-title">
+    <title>信息审核 - 手机奇趣网</title>
+    <link href="~/Content/wap-index.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/layer/layer.js"></script>
+    <script type="text/javascript">
+        (function () {
+            var baseFontSize = 100;
+            var baseWidth = 320;
+            var clientWidth = document.documentElement.clientWidth || window.innerWidth;
+            var innerWidth = Math.max(Math.min(clientWidth, 480), 320);
+
+            var rem = 100;
+
+            if (innerWidth > 362 && innerWidth <= 375) {
+                rem = Math.floor(innerWidth / baseWidth * baseFontSize * 0.9);
+            }
+
+            if (innerWidth > 375) {
+                rem = Math.floor(innerWidth / baseWidth * baseFontSize * 0.84);
+            }
+
+            window.__baseREM = rem;
+            document.querySelector('html').style.fontSize = rem + 'px';
+
+            $.ajaxSetup({
+                error: function (xhr, status, e) {
+                    if (xhr.status == 405) {
+                        layer.open({ content: "没有权限操作", time: 1.5 });
+                    } else if (xhr.status == 406) {
+                        layer.open({
+                            content: "登录超时,请重新登录",
+                            time: 1.5,
+                            end: function () {
+                                layer.closeAll();
+                                location.href = "/auditing/index";
+                            }
+                        });
+                    } else {
+                        layer.open({ content: "服务器出现未知错误", time: 1.5 });
+                    }
+                },
+                beforeSend: function (xhr) {
+                    //alert("beforeSend");
+                },
+                complete: function () {
+                    //alert("complete");
+                }
+            });
+
+        }());
+    </script>
+</head>
+
+<body>
+    @RenderBody()
+</body>
+</html>

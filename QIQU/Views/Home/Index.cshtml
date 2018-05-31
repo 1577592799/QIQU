@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Base.cshtml";
+}
+@section metas
+{
+    <title>奇趣网-好奇者的新世界</title>
+    <meta name="keywords" content="奇趣网,创新概念,科技前沿,艺术设计,创新设计,创意产品,二次元概念,最好玩的网站,前沿信息分享平台">
+    <meta name="description" content="奇趣网站是集中全球各种奇特的设计于一体的文章收集和文章分享的平台,包含了很多有趣和很奇特的创意产品,艺术设计,创新概念,科技前沿信息.满足你对未来世界即将诞生的产品或概念充满欲望,激发你对未来的无限想象.在这里,你将拥有自己对信息的衍生思想.">
+}
+
+<div id="container">
+
+    @if (ViewBag.ArticleRecommandList != null && ViewBag.ArticleRecommandList.Count > 0)
+    {
+        foreach (var item in ViewBag.ArticleRecommandList)
+        {
+            <div class="list">
+                <div class="mecc">
+                    <a href="javascript:;" class="iu">@item.ReadCount</a>
+                    <h2 class="mecctitle">
+                        <a href="/article/@item.Id" target="_blank">@item.Title</a>
+                    </h2>
+                    <address class="meccaddress">
+                        <time>@item.CreateTime.ToString("MM.dd")</time>
+                        -
+                        <a href="/article/@item.Id" rel="category tag">@item.Author</a> - 阅 @item.ReadCount
+                    </address>
+                </div>
+                <div class=" zaiyao"><p>@item.Summary</p></div>
+                <div class="clear"></div>
+            </div>
+        }
+    }
+
+    @if (ViewBag.ArticleList == null || ViewBag.ArticleList.Count <= 0)
+    {
+        <div class="noarticle">抱歉,暂时还没有你想找的相关文章!</div>
+    }
+    else
+    {
+        string key = Request.Params["key"];
+        foreach (QIQU.Entity.Extend.ArticleIndex item in ViewBag.ArticleList)
+        {
+            string str = string.IsNullOrEmpty(item.CategoryName) ? "" : "【" + item.CategoryName + "】";
+            bool isShowimg = string.IsNullOrEmpty(item.ImgUrl) ? false : true;
+            string title = !string.IsNullOrEmpty(key) && item.Title.Contains(key) ? item.Title.Replace(key, "<span style='color:#d6623d;'>" + key + "</span>") : item.Title;
+
+            <div class="list">
+                <div class="@(isShowimg ? "mecc" : "")">
+                    <a href="javascript:void(0);" class="iu">@item.ReadCount</a>
+                    <h2 class="mecctitle">
+                        <a href="/article/@item.Id" target="_blank" title="@item.Title"> @str @(new HtmlString(title))</a>
+                    </h2>
+                    <address class="meccaddress">
+                        <time>@item.CreateTime.ToString("MM.dd")</time>
+                        -
+                        <a href="javascript:;" rel="category tag">@item.Author</a> - 阅 @item.ReadCount
+                    </address>
+                </div>
+                @if (isShowimg)
+                {
+                    <span class="titleimg">
+                        <a href="/article/@item.Id" target="_blank">
+                            <img width="500" height="300" src="@item.ImgUrl" class="attachment-thumbnail wp-post-image" alt="@item.Title">
+                        </a>
+                    </span>
+                }
+                <div class="@(isShowimg ? "zaiyao" : "")"><p style="line-height:30px;">@item.Summary</p></div>
+                <div class="clear"></div>
+            </div>
+        }
+    }
+
+    <!--list-->
+    <div class="pagenavi">
+        @(new HtmlString(ViewBag.PageHtml))
+    </div>
+    <!--Page End-->
+</div>

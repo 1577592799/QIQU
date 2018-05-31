@@ -1,0 +1,30 @@
+﻿<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="bookmark" href="/favicon.ico" />
+<link href="~/css/home.css" rel="stylesheet" type="text/css" media="all" />
+<link href="~/css/qiqu-pc.css" rel="stylesheet" type="text/css" media="all" />
+<script src="~/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    function Sleep(obj, iMinSecond) {
+        if (window.eventList == null)
+            window.eventList = new Array();
+        var ind = -1;
+        for (var i = 0; i < window.eventList.length; i++) {
+            if (window.eventList[i] == null) {
+                window.eventList[i] = obj;
+                ind = i;
+                break;
+            }
+        }
+        if (ind == -1) {
+            ind = window.eventList.length;
+            window.eventList[ind] = obj;
+        }
+        setTimeout("GoOn(" + ind + ")", iMinSecond);
+    }
+    function GoOn(ind) {
+        var obj = window.eventList[ind];
+        window.eventList[ind] = null;
+        if (obj.NextStep) obj.NextStep();
+        else obj();
+    }
+</script>

@@ -1,0 +1,845 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="x5-page-mode" content="no-title">
+    <title>评论列表-奇趣网</title>
+    <script>
+        (function () {
+            var baseFontSize = 100;
+            var baseWidth = 320;
+            var clientWidth = document.documentElement.clientWidth || window.innerWidth;
+            var innerWidth = Math.max(Math.min(clientWidth, 480), 320);
+
+            var rem = 100;
+
+            if (innerWidth > 362 && innerWidth <= 375) {
+                rem = Math.floor(innerWidth / baseWidth * baseFontSize * 0.9);
+            }
+
+            if (innerWidth > 375) {
+                rem = Math.floor(innerWidth / baseWidth * baseFontSize * 0.84);
+            }
+
+            window.__baseREM = rem;
+            document.querySelector('html').style.fontSize = rem + 'px';
+        }());
+    </script>
+    <link href="~/Content/comments.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="skin" style="position: relative; padding-bottom: 0rem !important;">
+    <div class="lincowebapp-wrapper" id="wrapper">
+
+        <div id="virtualpage_comment" class="virtualPage">
+            <header id="newComment-head" class="page-comment-header"><a id="newComment-back" href="javascript:void(0);" class="iback lk-back"></a>
+            <span id="newComment-title" class="cmt-total">评论<em>125</em></span>
+            </header>
+            <div id="newComment-pnl" style="min-height: 919px;">
+                <div class="lincoapp-comment">
+                    <div class="page-comment-main">
+                        <div class="info-comment">
+                            <div class="info-comment-reply userInfo">
+                                <div class="info-reply-box">
+                                    <span class="u-img host_u_img" style="display:none">
+                                        <img src="" class="img">
+                                    </span>
+
+                                    <div class="info-reply-area">
+                                        <textarea class="info-reply-area cmt-text cmt_text j-UserInput j-InputFocus j-InputBlur" placeholder="说说你的看法"></textarea>
+                                        <div class="info-reply-bar">
+                                            <button class="cmt-btn j-Post">发表</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="main-comment commentInfo" style="">
+                                <div class="main-comment-title">最新评论</div>
+                                <ul class="main-comment-list commentInfoList">
+                                    <li data-id="6209250738204750944">
+                                        <span class="u-img">
+                                            <img src="//q1.qlogo.cn/g?b=qq&amp;k=oeVbmOsA4iaMfQv8ZsHYBdA&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    我和，你
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">8分钟前</time>
+
+
+                                                <span class="location">中国</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">SB一个</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="1">1</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209248773613737504">
+                                        <span class="u-img">
+                                            <img src="//q3.qlogo.cn/g?b=qq&amp;k=ZycM7rGugS1L8OFvHgXgUA&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    ↖超能奶爸↗
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">16分钟前</time>
+
+
+                                                <span class="location">中国四川成都</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">比马云还丑 像个锤子</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="2">2</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209247941796368527">
+                                        <span class="u-img">
+                                            <img src="//q3.qlogo.cn/g?b=qq&amp;k=C8ZKHLMkE9wma4MvGydYlA&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    祥子
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">19分钟前</time>
+
+
+                                                <span class="location">中国四川成都</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">sb</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="0">0</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209242448470287631">
+                                        <span class="u-img">
+                                            <img src="//q1.qlogo.cn/g?b=qq&amp;k=7NZ6u67uUjiaEvzetktZu1Q&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    清兮河兮飞扬兮
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">41分钟前</time>
+
+
+                                                <span class="location">中国河南南阳</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">信息爆炸的年代，各种脑残也层出不穷！</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="4">4</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209242056680349000">
+                                        <span class="u-img">
+                                            <img src="//q4.qlogo.cn/g?b=qq&amp;k=A1eneOFMJBWh4TGD9ZNPfA&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    童话
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">43分钟前</time>
+
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">有病傻缺</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="0">0</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209241610188309562">
+                                        <span class="u-img">
+                                            <img src="//q3.qlogo.cn/g?b=qq&amp;k=PtEqibuLFDFdib67Ty7s7dyw&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    杨左左
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">45分钟前</time>
+
+
+                                                <span class="location">中国广东深圳</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">丑的有一逼。吐</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="0">0</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209239306022229237">
+                                        <span class="u-img">
+                                            <img src="//q3.qlogo.cn/g?b=qq&amp;k=Rcatc91vauVHZ0KUcFF8iaQ&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    一个世界
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">54分钟前</time>
+
+
+                                                <span class="location">中国辽宁沈阳</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">神经病</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="0">0</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209238945642216705">
+                                        <span class="u-img">
+                                            <img src="//q1.qlogo.cn/g?b=qq&amp;k=jOpAm4aicHOqgwtLBiaib8r4Q&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    书桓
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">55分钟前</time>
+
+
+                                                <span class="location">马尔代夫法迪福卢</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">丢深圳的脸</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="3">3</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209237325421559006">
+                                        <span class="u-img">
+                                            <img src="//q1.qlogo.cn/g?b=qq&amp;k=IibHuUtWW6VeWQBRjcb4Xrg&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    i am the director
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">PS都帮不了你，还整容！GR的！</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="1">1</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209237290389680976">
+                                        <span class="u-img">
+                                            <img src="//q4.qlogo.cn/g?b=qq&amp;k=YMz6ic5keLplsPFRHChgSqQ&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    幻花ψ落心
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="location">中国河北石家庄</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">不像 百万浪费了</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="1">1</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209236776788766942">
+                                        <span class="u-img">
+                                            <img src="//q3.qlogo.cn/g?b=qq&amp;k=q4ImspUHInCWjf5PniaNOgQ&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    带头大哥
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">脑残，哈哈</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="2">2</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209236325205886495">
+                                        <span class="u-img">
+                                            <img src="//q3.qlogo.cn/g?b=qq&amp;k=U9EGcYzXepPa5tawoZ1EBw&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    云影深处
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="location">阿根廷布宜诺斯艾利斯</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">就算换了别人的脸，也不可能拥有别人的人生</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="1">1</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209235931734033362">
+                                        <span class="u-img">
+                                            <img src="//q4.qlogo.cn/g?b=qq&amp;k=hJvsVr4PpcEwOia6ibjrM4Hw&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    钟爱虹颜❀.
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="location">中国广东</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">该整成王建林</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="1">1</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209235338047074961">
+                                        <span class="u-img">
+                                            <img src="//q2.qlogo.cn/g?b=qq&amp;k=fUX1DVEqtj9serobYt2r5Q&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    俺那旮就俺帅
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">西游记里面的妖怪😨</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="0">0</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209235042570944918">
+                                        <span class="u-img">
+                                            <img src="//q2.qlogo.cn/g?b=qq&amp;k=q8dYKwh25giclVib0bF0gQeA&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    屋华添宝
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">眼睛再大一点，脸再平一点，个子再高点就像马云了</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="0">0</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209230933100932945">
+                                        <span class="u-img">
+                                            <img src="//q1.qlogo.cn/g?b=qq&amp;k=3fUCich5Cwud3wf3oW77MoA&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    时间就像沟乳挤一挤总会有
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="location">中国</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+
+                                            <ul class="main-comment-list small">
+                                                <li>
+                                                    <div class="cmt-name-wrap">
+                                                        <a class="cmt-name">
+                                                            頭髮、亂了
+
+
+                                                        </a>
+                                                        <span class="grade">1</span>
+                                                    </div>
+                                                    <div class="cmt-title">
+                                                        <time class="time">5小时前</time>
+
+
+                                                        <span class="location">中国广东广州</span>
+
+                                                    </div>
+                                                    <div class="cmt-content">要知羞耻！特么真的不要脸</div>
+                                                </li>
+                                            </ul>
+
+                                            <div class="cmt-content">是不要他原先的脸了啊</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="0">0</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209230563368850009">
+                                        <span class="u-img">
+                                            <img src="//q2.qlogo.cn/g?b=qq&amp;k=uevYd1zz5ianBdiaqgHUEKuQ&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    路
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="location">中国江西新余</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">别逼着马云去整容</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="0">0</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209228672139179215">
+                                        <span class="u-img">
+                                            <img src="//q2.qlogo.cn/g?b=qq&amp;k=ayokPl9PPyd3yojJTZfTicQ&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    小眼睛的大不同
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="location">中国</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">傻X鉴定完毕</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="6">6</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209228245825935327">
+                                        <span class="u-img">
+                                            <img src="//q4.qlogo.cn/g?b=qq&amp;k=DPYwNysgFdeNicwhLFo11Kg&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    刘大年
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="location">中国河南商丘</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">一百万不会是人民币</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="0">0</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-id="6209227530244272614">
+                                        <span class="u-img">
+                                            <img src="//q3.qlogo.cn/g?b=qq&amp;k=Zq4MNBz8XT1gO2OdvzYvvg&amp;s=40&amp;t=1480348800" class="img">
+                                        </span>
+                                        <div class="detail">
+                                            <div class="cmt-name-wrap">
+                                                <a class="cmt-name">
+                                                    风儿
+
+
+                                                </a>
+                                            </div>
+                                            <div class="cmt-title">
+                                                <time class="time">1小时前</time>
+
+
+                                                <span class="location">中国山西临汾</span>
+
+                                                <span class="btn-report j-ToggleReport">举报</span>
+                                            </div>
+
+                                            <div class="cmt-content">就一神经病</div>
+                                            <div class="cmt-bar">
+                                                <em class="cmt-btn2 btn-ilike j-Support" data-supportnum="4">4</em>
+                                                <em class="cmt-btn2 btn-reply j-ToggleReply">回复</em>
+                                            </div>
+                                            <div class="info-reply-area small" style="display: none;">
+                                                <textarea placeholder="回复Ta：" class="cmt-text j-UserInput"></textarea>
+                                                <div class="info-reply-bar">
+
+                                                    <span class="cmt-location active j-ToggleMap">点击获取位置</span>
+
+                                                    <button class="cmt-btn j-Reply">发表</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <a class="comment-link-more cmt-more j-CatMore catMore" href="javascript:;" style="">
+                                    <span>更多评论(</span><span class="remain-comment">105</span><span>条)</span>
+                                </a>
+                            </div>
+                            <div class="no-comment noComment" style="display: none;">暂无评论</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,320 @@
+﻿@charset "utf-8";
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "STHeiti",Helvetica,Arial,sans-serif;
+    line-height: 1.0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+legend {
+    display: none;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+abbr, acronym {
+    border: 0;
+}
+
+a {
+    color: #369;
+    text-decoration: none;
+}
+
+    a:focus {
+        color: #C00;
+        outline: 0;
+    }
+
+.clear {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+
+ins {
+    text-decoration: none;
+}
+
+html {
+    -webkit-text-size-adjust: none;
+}
+
+input[type="text"], input[type="button"], input[type="submit"], input[type="search"], input[type="password"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+input[type="checkbox"] {
+    margin: 0 3px 3px 4px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.f12 {
+    font-size: 1.2rem;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.fc {
+    display: block;
+    text-align: center;
+}
+
+.h1 {
+    height: 1px;
+}
+
+.h120 {
+    height: 120px;
+}
+
+.mgt40 {
+    margin-top: 40px;
+}
+
+.mgt50 {
+    margin-top: 50px;
+}
+
+.cGreen {
+    color: #094 !important;
+}
+
+.section-log {
+    width: 100%;
+}
+
+.section-warp {
+    margin: 10px auto 50px;
+    padding: 10px 10px 8px;
+    overflow: hidden;
+}
+
+.login-wrap {
+    width: 300px;
+    margin: 10px auto 50px;
+    overflow: hidden;
+}
+
+body {
+    background: #FBFBFB;
+    color: #1B1B1B;
+    font-size: 1.6rem;
+}
+
+.input-box {
+    font-size: 1.5rem;
+}
+
+.input-item {
+    position: relative;
+}
+
+    .input-item em {
+        padding: 0 7px;
+    }
+
+.input-box span {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 3;
+}
+
+.input-box strong {
+    width: auto;
+    height: 27px;
+    line-height: 27px;
+    color: #666;
+    text-align: center;
+    background: #FFF;
+    border: 1px solid #D1D1D1;
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    border-radius: 3px;
+    padding: 0 10px;
+    z-index: 3;
+    display: block;
+    cursor: pointer;
+}
+
+    .input-box strong:active {
+        background: #F4F4F4;
+    }
+
+    .input-box strong.disabled, .input-box strong.disabled:active {
+        background: #F6F6F6;
+        color: #CCC;
+    }
+
+.input-box .check-code {
+    width: 52px;
+    height: 29px;
+    position: absolute;
+    top: 8px;
+    right: 40px;
+    z-index: 3;
+}
+
+
+.input-box .btn-cancel {
+    width: 40px;
+    height: 42px;
+    background: url(/content/images/reg_ico_cancel.gif) no-repeat center center;
+    background-size: 19px 19px;
+    position: absolute;
+    top: 1px;
+    right: 0;
+    z-index: 3;
+}
+
+.input-box input {
+    height: 42px;
+    border: 1px solid #E2E2E2;
+    font-size: 1.5rem;
+    margin: -1px 0 0 0;
+    padding: 0;
+    border-radius: 0;
+    display: block;
+    position: relative;
+    z-index: 1;
+    color: #707070;
+}
+
+    .input-box input:focus {
+        outline: none !important;
+        border-color: #4490CE;
+        z-index: 2;
+    }
+
+.input-box .two-character {
+    padding-left: 57px;
+    width: 241px;
+}
+
+.input-box .three-character {
+    padding-left: 75px;
+    width: 223px;
+}
+
+.input-box .five-character {
+    padding-left: 104px;
+    width: 194px;
+}
+
+.input-alert-bottom {
+    color: #DD4B39;
+    font-size: 1.2rem;
+    padding: 15px 0 0 3px;
+    overflow: hidden;
+}
+
+.input-alert-middle {
+    color: #DD4B39;
+    font-size: 1.2rem;
+    padding: 7px 0 10px 15px;
+    overflow: hidden;
+}
+
+
+.btn-blue {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #4490CE;
+    text-align: center;
+    color: #FFF;
+    margin: 25px 0 15px;
+    /*border-radius: 3px;*/
+    font-size: 1.6rem;
+    border:none;
+}
+
+    .btn-blue:hover, .btn-blue:active {
+        background: #347CB7;
+        color: #FFF;
+    }
+
+.ico-yixiaoche-1, .ico-yixiaoche-2, .ico-yixiaoche-3 {
+    width: 85px;
+    height: 81px;
+    background-size: 85px 81px;
+    margin: 39px auto 15px;
+}
+
+
+
+.m-login-ttlogo {
+    text-align: center;
+}
+
+    .m-login-ttlogo .yiche-logo {
+        width: 85px;
+        height: 20px;
+        /*background: url() no-repeat;*/
+        background-size: 85px 33px;
+        margin: 20px auto 0;
+    }
+
+    .m-login-ttlogo p {
+        font-size: 2.0rem;
+        font-weight: bold;
+        margin: 12px 0 23px;
+    }
+
+        .m-login-ttlogo p em {
+            display: block;
+            font-size: 1.2rem;
+            padding: 10px 0 0;
+        }

@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model QIQU.Entity.Extend.Category
+
+<!--edit-->
+
+<form id="form1" action="#" method="post">
+    <input type="hidden" name="Id" id="hidden_id" value="@Model.Id" />
+    <table class="table" style="margin:auto;width:80%">
+        <tbody>
+            <tr>
+                <td style="width:100px;">名称 <font color="red">*</font>：</td>
+                <td><input type="text" class="form-control" id="input_name" name="Name" value="@Model.Name" style="width:100%;" maxlength="10" /></td>
+            </tr>
+            <tr>
+                <td>描述 ：</td>
+                <td><textarea style="height: 100px; width: 100%; " class="form-control" id="txt_remark" name="Remark" maxlength="50">@Model.Remark</textarea></td>
+            </tr>
+            <tr>
+                <td>创建日期：</td>
+                <td>@Model.CreateTime.ToString("yyyy-MM-dd HH:m:ss")</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value=" 提 交 " class="btn btn-default" /> <span id="span_info"></span></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<script src="~/Scripts/jquery.form.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    var isAction = false;
+    $("form").submit(function () {
+        if (isAction) {
+            return false;
+        }
+        isAction = true;
+
+        //组织item
+        $("span#span_info").html("<font color='blue'>正在处理，请稍后...</font>");
+
+        $(this).ajaxSubmit({
+            type: "post",
+            url: "/Article/CAction/",
+            success: function (data) {
+                if (data.state > 0) {
+                    $("span#span_info").html("<font color='blue'>处理成功,跳转中...</font>");
+                    Sleep(this, 1500);
+                    this.NextStep = function () {
+                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                        parent.layer.close(index); //再执行关闭  
+                    }
+                } else {
+                    $("span#span_info").html("<font color='red'>" + data.error + "</font>");
+                    isAction = false;
+                }
+            }
+        });
+        return false; //不刷新页面
+    });
+
+
+</script>
